@@ -1,1 +1,422 @@
+{
+  "xaiml_version": "1.0",
+  "app": "Example E-commerce App",
+  "nodes": [
+    {
+      "id": "home",
+      "type": "Page",
+      "title": "Accueil",
+      "children": ["home-hero", "home-featured", "home-categories"],
+      "meta": {
+        "path": "/",
+        "screenId": "home",
+        "stateLabel": "with-data",
+        "leadsTo": ["products", "login-modal", "cart"]
+      },
+      "purpose": "Afficher la page d'accueil de la boutique avec les produits en vedette",
+      "userGoal": "Découvrir les nouveautés et accéder au catalogue",
+      "userActionExpected": "Parcourir les sections ou cliquer sur un produit en vedette",
+      "nextVisibleOutcome": "Navigation vers le catalogue produits ou ouverture de la fiche produit"
+    },
+    {
+      "id": "home-hero",
+      "type": "Section",
+      "title": "Hero Banner",
+      "parent": "home",
+      "children": [],
+      "meta": {
+        "screenId": "home"
+      },
+      "purpose": "Mettre en avant une promotion ou un produit phare"
+    },
+    {
+      "id": "home-featured",
+      "type": "Section",
+      "title": "Produits en vedette",
+      "parent": "home",
+      "children": [],
+      "meta": {
+        "screenId": "home",
+        "leadsTo": ["product-detail"]
+      },
+      "purpose": "Afficher une sélection de produits mis en avant",
+      "userActionExpected": "Cliquer sur un produit pour voir ses détails"
+    },
+    {
+      "id": "home-categories",
+      "type": "Section",
+      "title": "Catégories",
+      "parent": "home",
+      "children": [],
+      "meta": {
+        "screenId": "home",
+        "leadsTo": ["products"]
+      },
+      "purpose": "Permettre l'accès rapide aux différentes catégories de produits"
+    },
+    {
+      "id": "products",
+      "type": "Page",
+      "title": "Catalogue Produits",
+      "children": ["products-filters", "products-grid"],
+      "meta": {
+        "path": "/products",
+        "screenId": "products",
+        "stateLabel": "with-data",
+        "leadsTo": ["product-detail", "cart", "home"]
+      },
+      "purpose": "Afficher la liste complète des produits disponibles",
+      "userGoal": "Trouver un produit à acheter en parcourant ou filtrant le catalogue",
+      "userActionExpected": "Utiliser les filtres puis sélectionner un produit",
+      "nextVisibleOutcome": "Affichage de la fiche détaillée du produit sélectionné"
+    },
+    {
+      "id": "products-empty",
+      "type": "Page",
+      "title": "Catalogue Produits - Vide",
+      "children": ["products-filters"],
+      "meta": {
+        "path": "/products",
+        "screenId": "products",
+        "stateLabel": "empty"
+      },
+      "purpose": "Afficher le catalogue lorsqu'aucun produit ne correspond aux critères",
+      "userGoal": "Trouver des produits malgré l'absence de résultats",
+      "blockingReason": "Aucun produit ne correspond aux filtres sélectionnés",
+      "nextVisibleOutcome": "Modification des filtres ou retour à l'accueil"
+    },
+    {
+      "id": "products-filters",
+      "type": "Section",
+      "title": "Filtres de recherche",
+      "parent": "products",
+      "children": [],
+      "meta": {
+        "screenId": "products"
+      },
+      "purpose": "Permettre de filtrer les produits par catégorie, prix, note",
+      "userActionExpected": "Sélectionner un ou plusieurs filtres pour affiner la recherche"
+    },
+    {
+      "id": "products-grid",
+      "type": "Section",
+      "title": "Grille de produits",
+      "parent": "products",
+      "children": [],
+      "meta": {
+        "screenId": "products",
+        "leadsTo": ["product-detail"]
+      },
+      "purpose": "Afficher les produits sous forme de grille avec image et prix",
+      "userActionExpected": "Cliquer sur une carte produit pour voir le détail"
+    },
+    {
+      "id": "product-detail",
+      "type": "Page",
+      "title": "Détail Produit",
+      "children": ["product-images", "product-info", "product-reviews"],
+      "meta": {
+        "path": "/products/:id",
+        "screenId": "product-detail",
+        "stateLabel": "with-data",
+        "leadsTo": ["add-to-cart-modal", "products", "cart"]
+      },
+      "purpose": "Afficher toutes les informations détaillées d'un produit",
+      "userGoal": "Consulter les détails du produit pour décider de l'acheter",
+      "userActionExpected": "Lire les informations, consulter les avis, puis ajouter au panier",
+      "nextVisibleOutcome": "Ouverture du modal de confirmation d'ajout au panier"
+    },
+    {
+      "id": "product-images",
+      "type": "Section",
+      "title": "Galerie d'images",
+      "parent": "product-detail",
+      "children": [],
+      "meta": {
+        "screenId": "product-detail"
+      },
+      "purpose": "Afficher les photos du produit sous différents angles"
+    },
+    {
+      "id": "product-info",
+      "type": "Section",
+      "title": "Informations produit",
+      "parent": "product-detail",
+      "children": [],
+      "meta": {
+        "screenId": "product-detail"
+      },
+      "purpose": "Afficher le nom, prix, description, stock et bouton d'ajout au panier",
+      "userActionExpected": "Lire les informations puis cliquer sur 'Ajouter au panier'"
+    },
+    {
+      "id": "product-reviews",
+      "type": "Section",
+      "title": "Avis clients",
+      "parent": "product-detail",
+      "children": [],
+      "meta": {
+        "screenId": "product-detail"
+      },
+      "purpose": "Afficher les avis et notes laissés par d'autres clients"
+    },
+    {
+      "id": "cart",
+      "type": "Page",
+      "title": "Panier",
+      "children": ["cart-items", "cart-summary"],
+      "meta": {
+        "path": "/cart",
+        "screenId": "cart",
+        "stateLabel": "with-data",
+        "leadsTo": ["checkout", "products", "delete-confirm-modal"]
+      },
+      "purpose": "Afficher les articles ajoutés au panier et le récapitulatif",
+      "userGoal": "Consulter le contenu du panier avant de passer commande",
+      "userActionExpected": "Vérifier les articles, modifier les quantités, puis valider",
+      "nextVisibleOutcome": "Redirection vers la page de paiement"
+    },
+    {
+      "id": "cart-empty",
+      "type": "Page",
+      "title": "Panier - Vide",
+      "children": [],
+      "meta": {
+        "path": "/cart",
+        "screenId": "cart",
+        "stateLabel": "empty",
+        "leadsTo": ["products", "home"]
+      },
+      "purpose": "Informer l'utilisateur que son panier est vide",
+      "blockingReason": "Aucun article n'a été ajouté au panier",
+      "nextVisibleOutcome": "Retour au catalogue pour ajouter des produits"
+    },
+    {
+      "id": "cart-items",
+      "type": "Section",
+      "title": "Articles du panier",
+      "parent": "cart",
+      "children": [],
+      "meta": {
+        "screenId": "cart"
+      },
+      "purpose": "Lister les produits ajoutés avec image, prix et quantité",
+      "userActionExpected": "Modifier les quantités ou supprimer des articles"
+    },
+    {
+      "id": "cart-summary",
+      "type": "Section",
+      "title": "Résumé de commande",
+      "parent": "cart",
+      "children": [],
+      "meta": {
+        "screenId": "cart",
+        "leadsTo": ["checkout"]
+      },
+      "purpose": "Afficher le total et le bouton de validation",
+      "userActionExpected": "Cliquer sur 'Passer la commande'"
+    },
+    {
+      "id": "checkout",
+      "type": "Page",
+      "title": "Paiement",
+      "children": ["checkout-shipping-tab", "checkout-payment-tab", "checkout-review-tab"],
+      "meta": {
+        "path": "/checkout",
+        "screenId": "checkout",
+        "stateLabel": "initial",
+        "leadsTo": ["checkout-success", "cart"]
+      },
+      "purpose": "Permettre la saisie des informations de livraison et paiement",
+      "userGoal": "Finaliser l'achat en renseignant les informations nécessaires",
+      "userActionExpected": "Remplir les formulaires étape par étape puis confirmer",
+      "nextVisibleOutcome": "Affichage de la confirmation de commande"
+    },
+    {
+      "id": "checkout-shipping-tab",
+      "type": "Tab",
+      "title": "Livraison",
+      "parent": "checkout",
+      "children": [],
+      "meta": {
+        "screenId": "checkout"
+      },
+      "purpose": "Saisir l'adresse de livraison"
+    },
+    {
+      "id": "checkout-payment-tab",
+      "type": "Tab",
+      "title": "Paiement",
+      "parent": "checkout",
+      "children": [],
+      "meta": {
+        "screenId": "checkout"
+      },
+      "purpose": "Saisir les informations de paiement"
+    },
+    {
+      "id": "checkout-review-tab",
+      "type": "Tab",
+      "title": "Récapitulatif",
+      "parent": "checkout",
+      "children": [],
+      "meta": {
+        "screenId": "checkout"
+      },
+      "purpose": "Vérifier toutes les informations avant validation finale"
+    },
+    {
+      "id": "checkout-success",
+      "type": "Page",
+      "title": "Commande confirmée",
+      "children": [],
+      "meta": {
+        "path": "/checkout/success",
+        "screenId": "checkout-success",
+        "stateLabel": "success",
+        "leadsTo": ["home", "account-orders-tab"]
+      },
+      "purpose": "Confirmer que la commande a bien été enregistrée",
+      "nextVisibleOutcome": "Retour à l'accueil ou consultation des commandes"
+    },
+    {
+      "id": "account",
+      "type": "Page",
+      "title": "Mon Compte",
+      "children": ["account-profile-tab", "account-orders-tab", "account-settings-tab"],
+      "meta": {
+        "path": "/account",
+        "screenId": "account",
+        "leadsTo": ["home", "products"]
+      },
+      "purpose": "Gérer les informations personnelles et consulter l'historique",
+      "userGoal": "Consulter ses commandes ou modifier son profil"
+    },
+    {
+      "id": "account-profile-tab",
+      "type": "Tab",
+      "title": "Profil",
+      "parent": "account",
+      "children": [],
+      "meta": {
+        "screenId": "account"
+      },
+      "purpose": "Modifier les informations personnelles"
+    },
+    {
+      "id": "account-orders-tab",
+      "type": "Tab",
+      "title": "Mes Commandes",
+      "parent": "account",
+      "children": [],
+      "meta": {
+        "screenId": "account",
+        "leadsTo": ["product-detail"]
+      },
+      "purpose": "Afficher l'historique des commandes passées"
+    },
+    {
+      "id": "account-settings-tab",
+      "type": "Tab",
+      "title": "Paramètres",
+      "parent": "account",
+      "children": [],
+      "meta": {
+        "screenId": "account"
+      },
+      "purpose": "Gérer les préférences de notification et de sécurité"
+    },
+    {
+      "id": "login-modal",
+      "type": "Modal",
+      "title": "Connexion",
+      "children": [],
+      "meta": {
+        "leadsTo": ["account", "home"]
+      },
+      "purpose": "Permettre à l'utilisateur de se connecter à son compte",
+      "userGoal": "Accéder à son compte existant",
+      "userActionExpected": "Saisir email et mot de passe puis valider",
+      "nextVisibleOutcome": "Redirection vers le compte ou fermeture du modal"
+    },
+    {
+      "id": "register-modal",
+      "type": "Modal",
+      "title": "Inscription",
+      "children": [],
+      "meta": {
+        "leadsTo": ["account", "home"]
+      },
+      "purpose": "Permettre la création d'un nouveau compte",
+      "userGoal": "Créer un compte pour bénéficier des services",
+      "userActionExpected": "Remplir le formulaire d'inscription puis valider"
+    },
+    {
+      "id": "add-to-cart-modal",
+      "type": "Modal",
+      "title": "Ajouté au panier",
+      "children": [],
+      "meta": {
+        "leadsTo": ["cart", "products", "product-detail"]
+      },
+      "purpose": "Confirmer l'ajout d'un produit au panier",
+      "nextVisibleOutcome": "Choix entre continuer les achats ou consulter le panier"
+    },
+    {
+      "id": "delete-confirm-modal",
+      "type": "Confirmation",
+      "title": "Confirmer la suppression",
+      "children": [],
+      "meta": {
+        "leadsTo": ["cart"]
+      },
+      "purpose": "Demander confirmation avant de supprimer un article du panier",
+      "userActionExpected": "Confirmer ou annuler la suppression"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "recommended",
+      "title": "Parcours recommandé",
+      "steps": [
+        { "nodeId": "home" },
+        { "nodeId": "products" },
+        { "nodeId": "product-detail" },
+        { "nodeId": "add-to-cart-modal" },
+        { "nodeId": "cart" },
+        { "nodeId": "checkout" },
+        { "nodeId": "checkout-success" }
+      ]
+    },
+    {
+      "id": "guest-checkout",
+      "title": "Achat invité",
+      "steps": [
+        { "nodeId": "home" },
+        { "nodeId": "products" },
+        { "nodeId": "product-detail" },
+        { "nodeId": "cart" },
+        { "nodeId": "checkout" }
+      ]
+    },
+    {
+      "id": "returning-user",
+      "title": "Utilisateur récurrent",
+      "steps": [
+        { "nodeId": "login-modal" },
+        { "nodeId": "account" },
+        { "nodeId": "account-orders-tab" },
+        { "nodeId": "products" }
+      ]
+    }
+  ],
+  "meta": {
+    "projectName": "E-commerce",
+    "created": "2025-01-15T10:30:00Z",
+    "modified": "2025-12-25T18:00:00Z",
+    "author": "Product Team",
+    "appVersion": "2.1.0",
+    "appDescription": "Application e-commerce complète avec gestion des produits, panier et paiement"
+  }
+}
 
