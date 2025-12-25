@@ -5,7 +5,7 @@
     {
       "id": "home",
       "type": "Page",
-      "title": "Accueil",
+      "title": "Home",
       "children": ["home-hero", "home-featured", "home-categories"],
       "meta": {
         "path": "/",
@@ -13,10 +13,10 @@
         "stateLabel": "with-data",
         "leadsTo": ["products", "login-modal", "cart"]
       },
-      "purpose": "Afficher la page d'accueil de la boutique avec les produits en vedette",
-      "userGoal": "Découvrir les nouveautés et accéder au catalogue",
-      "userActionExpected": "Parcourir les sections ou cliquer sur un produit en vedette",
-      "nextVisibleOutcome": "Navigation vers le catalogue produits ou ouverture de la fiche produit"
+      "purpose": "Display the store homepage with featured products",
+      "userGoal": "Discover new products and access the catalog",
+      "userActionExpected": "Browse sections or click on a featured product",
+      "nextVisibleOutcome": "Navigation to the product catalog or opening of the product detail page"
     },
     {
       "id": "home-hero",
@@ -27,37 +27,37 @@
       "meta": {
         "screenId": "home"
       },
-      "purpose": "Mettre en avant une promotion ou un produit phare"
+      "purpose": "Highlight a promotion or a featured product"
     },
     {
       "id": "home-featured",
       "type": "Section",
-      "title": "Produits en vedette",
+      "title": "Featured Products",
       "parent": "home",
       "children": [],
       "meta": {
         "screenId": "home",
         "leadsTo": ["product-detail"]
       },
-      "purpose": "Afficher une sélection de produits mis en avant",
-      "userActionExpected": "Cliquer sur un produit pour voir ses détails"
+      "purpose": "Display a selection of featured products",
+      "userActionExpected": "Click on a product to view its details"
     },
     {
       "id": "home-categories",
       "type": "Section",
-      "title": "Catégories",
+      "title": "Categories",
       "parent": "home",
       "children": [],
       "meta": {
         "screenId": "home",
         "leadsTo": ["products"]
       },
-      "purpose": "Permettre l'accès rapide aux différentes catégories de produits"
+      "purpose": "Provide quick access to different product categories"
     },
     {
       "id": "products",
       "type": "Page",
-      "title": "Catalogue Produits",
+      "title": "Product Catalog",
       "children": ["products-filters", "products-grid"],
       "meta": {
         "path": "/products",
@@ -65,55 +65,55 @@
         "stateLabel": "with-data",
         "leadsTo": ["product-detail", "cart", "home"]
       },
-      "purpose": "Afficher la liste complète des produits disponibles",
-      "userGoal": "Trouver un produit à acheter en parcourant ou filtrant le catalogue",
-      "userActionExpected": "Utiliser les filtres puis sélectionner un produit",
-      "nextVisibleOutcome": "Affichage de la fiche détaillée du produit sélectionné"
+      "purpose": "Display the complete list of available products",
+      "userGoal": "Find a product to purchase by browsing or filtering the catalog",
+      "userActionExpected": "Use filters and then select a product",
+      "nextVisibleOutcome": "Display of the selected product detail page"
     },
     {
       "id": "products-empty",
       "type": "Page",
-      "title": "Catalogue Produits - Vide",
+      "title": "Product Catalog - Empty",
       "children": ["products-filters"],
       "meta": {
         "path": "/products",
         "screenId": "products",
         "stateLabel": "empty"
       },
-      "purpose": "Afficher le catalogue lorsqu'aucun produit ne correspond aux critères",
-      "userGoal": "Trouver des produits malgré l'absence de résultats",
-      "blockingReason": "Aucun produit ne correspond aux filtres sélectionnés",
-      "nextVisibleOutcome": "Modification des filtres ou retour à l'accueil"
+      "purpose": "Display the catalog when no products match the criteria",
+      "userGoal": "Find products despite no results being available",
+      "blockingReason": "No products match the selected filters",
+      "nextVisibleOutcome": "Filter modification or return to the homepage"
     },
     {
       "id": "products-filters",
       "type": "Section",
-      "title": "Filtres de recherche",
+      "title": "Search Filters",
       "parent": "products",
       "children": [],
       "meta": {
         "screenId": "products"
       },
-      "purpose": "Permettre de filtrer les produits par catégorie, prix, note",
-      "userActionExpected": "Sélectionner un ou plusieurs filtres pour affiner la recherche"
+      "purpose": "Allow filtering products by category, price, or rating",
+      "userActionExpected": "Select one or more filters to refine the search"
     },
     {
       "id": "products-grid",
       "type": "Section",
-      "title": "Grille de produits",
+      "title": "Product Grid",
       "parent": "products",
       "children": [],
       "meta": {
         "screenId": "products",
         "leadsTo": ["product-detail"]
       },
-      "purpose": "Afficher les produits sous forme de grille avec image et prix",
-      "userActionExpected": "Cliquer sur une carte produit pour voir le détail"
+      "purpose": "Display products in a grid with image and price",
+      "userActionExpected": "Click on a product card to view details"
     },
     {
       "id": "product-detail",
       "type": "Page",
-      "title": "Détail Produit",
+      "title": "Product Detail",
       "children": ["product-images", "product-info", "product-reviews"],
       "meta": {
         "path": "/products/:id",
@@ -121,49 +121,49 @@
         "stateLabel": "with-data",
         "leadsTo": ["add-to-cart-modal", "products", "cart"]
       },
-      "purpose": "Afficher toutes les informations détaillées d'un produit",
-      "userGoal": "Consulter les détails du produit pour décider de l'acheter",
-      "userActionExpected": "Lire les informations, consulter les avis, puis ajouter au panier",
-      "nextVisibleOutcome": "Ouverture du modal de confirmation d'ajout au panier"
+      "purpose": "Display all detailed information about a product",
+      "userGoal": "Review product details to decide whether to purchase",
+      "userActionExpected": "Read information, review ratings, then add to cart",
+      "nextVisibleOutcome": "Opening of the add-to-cart confirmation modal"
     },
     {
       "id": "product-images",
       "type": "Section",
-      "title": "Galerie d'images",
+      "title": "Image Gallery",
       "parent": "product-detail",
       "children": [],
       "meta": {
         "screenId": "product-detail"
       },
-      "purpose": "Afficher les photos du produit sous différents angles"
+      "purpose": "Display product photos from different angles"
     },
     {
       "id": "product-info",
       "type": "Section",
-      "title": "Informations produit",
+      "title": "Product Information",
       "parent": "product-detail",
       "children": [],
       "meta": {
         "screenId": "product-detail"
       },
-      "purpose": "Afficher le nom, prix, description, stock et bouton d'ajout au panier",
-      "userActionExpected": "Lire les informations puis cliquer sur 'Ajouter au panier'"
+      "purpose": "Display name, price, description, stock, and add-to-cart button",
+      "userActionExpected": "Read information and click 'Add to cart'"
     },
     {
       "id": "product-reviews",
       "type": "Section",
-      "title": "Avis clients",
+      "title": "Customer Reviews",
       "parent": "product-detail",
       "children": [],
       "meta": {
         "screenId": "product-detail"
       },
-      "purpose": "Afficher les avis et notes laissés par d'autres clients"
+      "purpose": "Display reviews and ratings left by other customers"
     },
     {
       "id": "cart",
       "type": "Page",
-      "title": "Panier",
+      "title": "Cart",
       "children": ["cart-items", "cart-summary"],
       "meta": {
         "path": "/cart",
@@ -171,15 +171,15 @@
         "stateLabel": "with-data",
         "leadsTo": ["checkout", "products", "delete-confirm-modal"]
       },
-      "purpose": "Afficher les articles ajoutés au panier et le récapitulatif",
-      "userGoal": "Consulter le contenu du panier avant de passer commande",
-      "userActionExpected": "Vérifier les articles, modifier les quantités, puis valider",
-      "nextVisibleOutcome": "Redirection vers la page de paiement"
+      "purpose": "Display items added to the cart and the order summary",
+      "userGoal": "Review cart contents before placing an order",
+      "userActionExpected": "Check items, adjust quantities, then proceed",
+      "nextVisibleOutcome": "Redirection to the checkout page"
     },
     {
       "id": "cart-empty",
       "type": "Page",
-      "title": "Panier - Vide",
+      "title": "Cart - Empty",
       "children": [],
       "meta": {
         "path": "/cart",
@@ -187,39 +187,39 @@
         "stateLabel": "empty",
         "leadsTo": ["products", "home"]
       },
-      "purpose": "Informer l'utilisateur que son panier est vide",
-      "blockingReason": "Aucun article n'a été ajouté au panier",
-      "nextVisibleOutcome": "Retour au catalogue pour ajouter des produits"
+      "purpose": "Inform the user that the cart is empty",
+      "blockingReason": "No items have been added to the cart",
+      "nextVisibleOutcome": "Return to the product catalog to add items"
     },
     {
       "id": "cart-items",
       "type": "Section",
-      "title": "Articles du panier",
+      "title": "Cart Items",
       "parent": "cart",
       "children": [],
       "meta": {
         "screenId": "cart"
       },
-      "purpose": "Lister les produits ajoutés avec image, prix et quantité",
-      "userActionExpected": "Modifier les quantités ou supprimer des articles"
+      "purpose": "List added products with image, price, and quantity",
+      "userActionExpected": "Modify quantities or remove items"
     },
     {
       "id": "cart-summary",
       "type": "Section",
-      "title": "Résumé de commande",
+      "title": "Order Summary",
       "parent": "cart",
       "children": [],
       "meta": {
         "screenId": "cart",
         "leadsTo": ["checkout"]
       },
-      "purpose": "Afficher le total et le bouton de validation",
-      "userActionExpected": "Cliquer sur 'Passer la commande'"
+      "purpose": "Display total amount and checkout button",
+      "userActionExpected": "Click 'Proceed to checkout'"
     },
     {
       "id": "checkout",
       "type": "Page",
-      "title": "Paiement",
+      "title": "Checkout",
       "children": ["checkout-shipping-tab", "checkout-payment-tab", "checkout-review-tab"],
       "meta": {
         "path": "/checkout",
@@ -227,48 +227,48 @@
         "stateLabel": "initial",
         "leadsTo": ["checkout-success", "cart"]
       },
-      "purpose": "Permettre la saisie des informations de livraison et paiement",
-      "userGoal": "Finaliser l'achat en renseignant les informations nécessaires",
-      "userActionExpected": "Remplir les formulaires étape par étape puis confirmer",
-      "nextVisibleOutcome": "Affichage de la confirmation de commande"
+      "purpose": "Allow entry of shipping and payment information",
+      "userGoal": "Complete the purchase by providing required information",
+      "userActionExpected": "Fill in forms step by step and confirm",
+      "nextVisibleOutcome": "Display of order confirmation"
     },
     {
       "id": "checkout-shipping-tab",
       "type": "Tab",
-      "title": "Livraison",
+      "title": "Shipping",
       "parent": "checkout",
       "children": [],
       "meta": {
         "screenId": "checkout"
       },
-      "purpose": "Saisir l'adresse de livraison"
+      "purpose": "Enter the shipping address"
     },
     {
       "id": "checkout-payment-tab",
       "type": "Tab",
-      "title": "Paiement",
+      "title": "Payment",
       "parent": "checkout",
       "children": [],
       "meta": {
         "screenId": "checkout"
       },
-      "purpose": "Saisir les informations de paiement"
+      "purpose": "Enter payment information"
     },
     {
       "id": "checkout-review-tab",
       "type": "Tab",
-      "title": "Récapitulatif",
+      "title": "Review",
       "parent": "checkout",
       "children": [],
       "meta": {
         "screenId": "checkout"
       },
-      "purpose": "Vérifier toutes les informations avant validation finale"
+      "purpose": "Review all information before final confirmation"
     },
     {
       "id": "checkout-success",
       "type": "Page",
-      "title": "Commande confirmée",
+      "title": "Order Confirmed",
       "children": [],
       "meta": {
         "path": "/checkout/success",
@@ -276,108 +276,108 @@
         "stateLabel": "success",
         "leadsTo": ["home", "account-orders-tab"]
       },
-      "purpose": "Confirmer que la commande a bien été enregistrée",
-      "nextVisibleOutcome": "Retour à l'accueil ou consultation des commandes"
+      "purpose": "Confirm that the order has been successfully placed",
+      "nextVisibleOutcome": "Return to the homepage or view orders"
     },
     {
       "id": "account",
       "type": "Page",
-      "title": "Mon Compte",
+      "title": "My Account",
       "children": ["account-profile-tab", "account-orders-tab", "account-settings-tab"],
       "meta": {
         "path": "/account",
         "screenId": "account",
         "leadsTo": ["home", "products"]
       },
-      "purpose": "Gérer les informations personnelles et consulter l'historique",
-      "userGoal": "Consulter ses commandes ou modifier son profil"
+      "purpose": "Manage personal information and view order history",
+      "userGoal": "View orders or update profile information"
     },
     {
       "id": "account-profile-tab",
       "type": "Tab",
-      "title": "Profil",
+      "title": "Profile",
       "parent": "account",
       "children": [],
       "meta": {
         "screenId": "account"
       },
-      "purpose": "Modifier les informations personnelles"
+      "purpose": "Update personal information"
     },
     {
       "id": "account-orders-tab",
       "type": "Tab",
-      "title": "Mes Commandes",
+      "title": "My Orders",
       "parent": "account",
       "children": [],
       "meta": {
         "screenId": "account",
         "leadsTo": ["product-detail"]
       },
-      "purpose": "Afficher l'historique des commandes passées"
+      "purpose": "Display the history of past orders"
     },
     {
       "id": "account-settings-tab",
       "type": "Tab",
-      "title": "Paramètres",
+      "title": "Settings",
       "parent": "account",
       "children": [],
       "meta": {
         "screenId": "account"
       },
-      "purpose": "Gérer les préférences de notification et de sécurité"
+      "purpose": "Manage notification and security preferences"
     },
     {
       "id": "login-modal",
       "type": "Modal",
-      "title": "Connexion",
+      "title": "Login",
       "children": [],
       "meta": {
         "leadsTo": ["account", "home"]
       },
-      "purpose": "Permettre à l'utilisateur de se connecter à son compte",
-      "userGoal": "Accéder à son compte existant",
-      "userActionExpected": "Saisir email et mot de passe puis valider",
-      "nextVisibleOutcome": "Redirection vers le compte ou fermeture du modal"
+      "purpose": "Allow the user to log into their account",
+      "userGoal": "Access an existing account",
+      "userActionExpected": "Enter email and password and submit",
+      "nextVisibleOutcome": "Redirection to the account or closing of the modal"
     },
     {
       "id": "register-modal",
       "type": "Modal",
-      "title": "Inscription",
+      "title": "Register",
       "children": [],
       "meta": {
         "leadsTo": ["account", "home"]
       },
-      "purpose": "Permettre la création d'un nouveau compte",
-      "userGoal": "Créer un compte pour bénéficier des services",
-      "userActionExpected": "Remplir le formulaire d'inscription puis valider"
+      "purpose": "Allow creation of a new account",
+      "userGoal": "Create an account to access services",
+      "userActionExpected": "Fill in the registration form and submit"
     },
     {
       "id": "add-to-cart-modal",
       "type": "Modal",
-      "title": "Ajouté au panier",
+      "title": "Added to Cart",
       "children": [],
       "meta": {
         "leadsTo": ["cart", "products", "product-detail"]
       },
-      "purpose": "Confirmer l'ajout d'un produit au panier",
-      "nextVisibleOutcome": "Choix entre continuer les achats ou consulter le panier"
+      "purpose": "Confirm that a product has been added to the cart",
+      "nextVisibleOutcome": "Choice between continuing shopping or viewing the cart"
     },
     {
       "id": "delete-confirm-modal",
       "type": "Confirmation",
-      "title": "Confirmer la suppression",
+      "title": "Confirm Deletion",
       "children": [],
       "meta": {
         "leadsTo": ["cart"]
       },
-      "purpose": "Demander confirmation avant de supprimer un article du panier",
-      "userActionExpected": "Confirmer ou annuler la suppression"
+      "purpose": "Ask for confirmation before removing an item from the cart",
+      "userActionExpected": "Confirm or cancel the deletion"
     }
   ],
   "workflows": [
     {
       "id": "recommended",
-      "title": "Parcours recommandé",
+      "title": "Recommended Flow",
       "steps": [
         { "nodeId": "home" },
         { "nodeId": "products" },
@@ -390,7 +390,7 @@
     },
     {
       "id": "guest-checkout",
-      "title": "Achat invité",
+      "title": "Guest Checkout",
       "steps": [
         { "nodeId": "home" },
         { "nodeId": "products" },
@@ -401,7 +401,7 @@
     },
     {
       "id": "returning-user",
-      "title": "Utilisateur récurrent",
+      "title": "Returning User",
       "steps": [
         { "nodeId": "login-modal" },
         { "nodeId": "account" },
@@ -416,7 +416,6 @@
     "modified": "2025-12-25T18:00:00Z",
     "author": "Product Team",
     "appVersion": "2.1.0",
-    "appDescription": "Application e-commerce complète avec gestion des produits, panier et paiement"
+    "appDescription": "Complete e-commerce application with product, cart, and checkout management"
   }
 }
-
