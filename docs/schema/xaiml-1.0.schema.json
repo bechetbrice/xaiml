@@ -1,1 +1,105 @@
-
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xaiml.org/schema/xaiml-1.0.json",
+  "title": "xAIML v1.0",
+  "type": "object",
+  "required": ["xaiml_version", "app", "nodes"],
+  "properties": {
+    "xaiml_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "app": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "workflows": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/workflow" }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "title", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Accordion",
+            "Action",
+            "Breadcrumb",
+            "Carousel",
+            "Confirmation",
+            "Drawer",
+            "Group",
+            "Help",
+            "Modal",
+            "Onboarding",
+            "Overlay",
+            "Page",
+            "Panel",
+            "Section",
+            "Sheet",
+            "Stepper",
+            "Tab",
+            "Tooltip",
+            "View",
+            "Wizard"
+          ]
+        },
+        "parent": { "type": "string" },
+        "children": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "screenId": { "type": "string" },
+        "stateLabel": { "type": "string" },
+        "leadsTo": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "purpose": { "type": "string" },
+        "userGoal": { "type": "string" },
+        "userActionExpected": { "type": "string" },
+        "blockingReason": { "type": "string" },
+        "nextVisibleOutcome": { "type": "string" },
+        "meta": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "workflow": {
+      "type": "object",
+      "required": ["id", "title", "steps"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["nodeId"],
+            "properties": {
+              "nodeId": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
